@@ -2,7 +2,7 @@ const { test } = require('brittle')
 const b4a = require('b4a')
 const { encode, decode } = require('../')
 
-test('key', async (t) => {
+test('key', (t) => {
   const key = b4a.alloc(32, 'test')
 
   const decoded = decode(encode(key))
@@ -10,7 +10,7 @@ test('key', async (t) => {
   t.is(decoded.nodes, null, 'decodes nodes as null for key only buffers')
 })
 
-test('key + nodes', async (t) => {
+test('key + nodes', (t) => {
   const key = b4a.alloc(32, 'test')
 
   const decoded = decode(encode(key, [{ host: '0.0.0.0', port: 12345 }]))
